@@ -1,7 +1,5 @@
 <?php
 
-namespace database\Seeds;
-
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -14,10 +12,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        Users::create([
+        DB::table('users')->insert([
             'username' => '名前',
             'mail' => 'メール',
-            'password' => 'パスワード'
+            'password' => bcrypt('パスワード')
         ]);
     }
 }
