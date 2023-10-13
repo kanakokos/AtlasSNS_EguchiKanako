@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use app\http\Requests\validation; //追記：バリデーション
+
 
 class RegisterController extends Controller
 {

@@ -11,30 +11,33 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', function () {
+//  return view('welcome');
+//});
+//Route::get('/home', 'HomeController@index')->name('home');
 
 //Auth::routes();
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+//getに「->name('〇〇');」（nameメソッド）を追加
+Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@register')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/added', 'Auth\RegisterController@added');
+Route::get('/added', 'Auth\RegisterController@added')->name('added');
 Route::post('/added', 'Auth\RegisterController@added');
 
-//ログイン中のページ
-Route::get('/top','PostsController@index');
 
-Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+// ログイン中のページ
+Route::get('/top', 'PostsController@index')->name('top');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/profile', 'UsersController@profile')->name('profile');
+
+Route::get('/search', 'UsersController@index')->name('search');
+
+Route::get('/follow-list', 'PostsController@index')->name('follow-list');
+Route::get('/follower-list', 'PostsController@index')->name('follower-list');

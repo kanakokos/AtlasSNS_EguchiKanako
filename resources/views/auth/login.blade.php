@@ -2,11 +2,11 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/〇〇']) !!}
+{!! Form::open(['url' => route('login')]) !!}
 
 <p>AtlasSNSへようこそ</p>
 
-{{ Form::label('e-mail') }}
+{{ Form::label('mail', 'E-mail') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
 {{ Form::label('password') }}
 {{ Form::password('password',['class' => 'input']) }}

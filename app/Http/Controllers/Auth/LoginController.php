@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use app\http\Requests\validation; //追記：バリデーション
 
 class LoginController extends Controller
 {
