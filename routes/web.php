@@ -19,6 +19,8 @@
 //Auth::routes();
 
 
+Route::get('/form', 'FormController@index');
+
 //ログアウト中のページ
 //getに「->name('〇〇');」（nameメソッド）を追加
 Route::get('/login', 'Auth\LoginController@login')->name('login');

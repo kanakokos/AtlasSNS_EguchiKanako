@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest; //追記：\RegisterRequest
 use Illuminate\Http\Request;
-use app\http\Requests\validation; //追記：バリデーション
-
 
 class RegisterController extends Controller
 {
@@ -41,7 +40,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function register(Request $request){
+    public function register(RegisterRequest $request){
         if($request->isMethod('post')){
 
             $username = $request->input('username');
@@ -56,6 +55,7 @@ class RegisterController extends Controller
 
             return redirect('added');
         }
+        dd($request); //でバック
         return view('auth.register');
     }
 
