@@ -26,7 +26,9 @@ Route::get('/form', 'FormController@index');
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/register', 'Auth\RegisterController@register')->name('register');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/register', 'Auth\RegisterController@registerView')->name('register'); // @registerViewに変更
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added')->name('added');

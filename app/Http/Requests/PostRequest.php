@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true; //false ⇒ true に変更(アクセス権限を求めない場合true)
     }
 
     /**
@@ -24,7 +24,20 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            //つぶやき投稿　バリデーション
+            'Post' => 'required|string|min:1|max:150',
+        ];
+    }
+
+
+        public function messages()
+    {
+        return [
+            //ここからエラーメッセージ
+            'Post.required' => '文字を入力してください',
+            'Post.string' => '文字列で入力してください',
+            'Post.min' => 'ユーザー名は最低1文字以上で入力してください',
+            'Post.max' => 'ユーザー名は150文字以内で入力してください',
         ];
     }
 }

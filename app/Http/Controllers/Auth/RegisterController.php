@@ -38,7 +38,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
     }
+
+
 
     public function register(RegisterRequest $request){
         if($request->isMethod('post')){
@@ -55,9 +58,20 @@ class RegisterController extends Controller
 
             return redirect('added');
         }
-        dd($request); //でバック
+
         return view('auth.register');
     }
+
+
+    public function registerView(RegisterRequest $request){
+        // if($request->isMethod('get')){
+
+             return view('auth.register');
+
+        // }
+
+    }
+
 
     public function added(){
         return view('auth.added');

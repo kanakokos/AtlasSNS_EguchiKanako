@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return true; //false ⇒ true に変更
+        return true; //false ⇒ true に変更(アクセス権限を求めない場合true)
     }
 
     /**
@@ -33,18 +33,6 @@ class RegisterRequest extends FormRequest
             'MailAdress' => 'required|email|unique:users|min:5|max:40',
             'Password' => 'required|regex:/^[a-zA-Z0-9]*$/|min:8|max:20',
             'PasswordConfirm' => 'required|confirmed',
-
-
-            //つぶやき投稿
-//            'Post' => 'required|string|min:1|max:150',
-
-
-            //プロフィール編集機能
-//            'MailAdress' => 'required|email|unique:users,email|min:5|max:40',
-//            'NewPassword' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:20',
-//            'NewPasswordConfirm' => 'required|confirmed',
-            // 'Bio' => 'required|max:150',
-            // 'IconImage' => 'required|image|mimes:jpeg,png,bmp,gif,svg',
         ];
     }
 
@@ -60,7 +48,8 @@ class RegisterRequest extends FormRequest
             'MailAdress.required' => 'メールアドレスを入力してください',
             'MailAdress.email' => '有効なメールアドレスを入力してください',
             'MailAdress.unique' => 'このメールアドレスは既に使用されています',
-            'MailAdress.max' => 'メールアドレスは255文字以内で入力してください',
+            'MailAdress.min' => 'メールアドレスは最低2文字以上で入力してください',
+            'MailAdress.max' => 'メールアドレスは40文字以内で入力してください',
             'Password.required' => 'パスワードを入力してください',
             'Password.regex' => 'パスワードは英数字のみ使用できます',
             'Password.min' => 'パスワードは8文字以上で入力してください',
