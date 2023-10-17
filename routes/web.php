@@ -23,13 +23,15 @@ Route::get('/form', 'FormController@index');
 
 //ログアウト中のページ
 //getに「->name('〇〇');」（nameメソッド）を追加
+//Route::get('URL', 'ファイル@処理')
+
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/register', 'Auth\RegisterController@registerView')->name('register'); // @registerViewに変更
-Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/registerView', 'Auth\RegisterController@registerView'); // @registerViewに変更
+Route::post('/registerPost', 'Auth\RegisterController@registerPost');
 
 Route::get('/added', 'Auth\RegisterController@added')->name('added');
 Route::post('/added', 'Auth\RegisterController@added');

@@ -1,20 +1,31 @@
-@extends('layouts.logout')
 
-@section('content')
+<div class="login-container">
+
+@extends('layouts.logout') <!--親のファイルを継承-->
+
+@section('content') <!--入口-->
+
 <!-- 適切なURLを入力してください -->
 {!! Form::open(['url' => route('login')]) !!}
 
-<p>AtlasSNSへようこそ</p>
 
-{{ Form::label('mail', 'E-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
 
-{{ Form::submit('ログイン') }}
+  <div class="login-form-content">
+    <p>AtlasSNSへようこそ</p>
+    <div class="login-form">
 
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
+      <p>{{ Form::label('mail', 'E-mail') }}</p>
+      <div>{{ Form::text('mail',null,['class' => 'input']) }}</div>
+      <p>{{ Form::label('password') }}</p>
+      <div>{{ Form::password('password',['class' => 'input']) }}</div>
+
+      <div>{{ Form::submit('ログイン') }}</div>
+
+      <p><a href="/registerView">新規ユーザーの方はこちら</a></p>
 
 {!! Form::close() !!}
+    </div>
+  </div>
+</div>
 
-@endsection
+@endsection <!--出口-->

@@ -43,8 +43,7 @@ class RegisterController extends Controller
 
 
 
-    public function register(RegisterRequest $request){
-        if($request->isMethod('post')){
+    public function registerPost(RegisterRequest $request){
 
             $username = $request->input('username');
             $mail = $request->input('mail');
@@ -55,22 +54,20 @@ class RegisterController extends Controller
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
-
             return redirect('added');
         }
 
-        return view('auth.register');
-    }
 
 
-    public function registerView(RegisterRequest $request){
-        // if($request->isMethod('get')){
+
+     public function registerView(){ //データをもらってないから空欄
+         // if($request->isMethod('get')){
 
              return view('auth.register');
 
-        // }
+        }
 
-    }
+    // }
 
 
     public function added(){
