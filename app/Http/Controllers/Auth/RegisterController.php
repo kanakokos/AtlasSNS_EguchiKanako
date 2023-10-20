@@ -55,7 +55,7 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
-            //セッションの保存
+            //セッションの保存、ユーザー名をほかのページでも表示できるようにする。使い方⇒ {{session('username')}} )
             $request->session()->put('username',$request->username);
 
             return redirect('added');
