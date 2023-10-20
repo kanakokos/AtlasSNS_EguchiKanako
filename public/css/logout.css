@@ -22,7 +22,12 @@ p {
 }
 
 .login-form-content {
-    height: 450px;
+    background-color: aquamarine;
+    height: 350px;
+    width: 300px;
+    margin: 0 auto;
+    /*中心に寄せる*/
+
 
 }
 

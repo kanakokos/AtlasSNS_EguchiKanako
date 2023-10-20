@@ -21,7 +21,7 @@
 
       <div>{{ Form::submit('ログイン') }}</div>
 
-      <p><a href="/registerView">新規ユーザーの方はこちら</a></p>
+      <p><a href="/register">新規ユーザーの方はこちら</a></p>
 
 {!! Form::close() !!}
     </div>

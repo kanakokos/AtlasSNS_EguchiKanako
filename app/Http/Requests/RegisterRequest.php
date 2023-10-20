@@ -19,7 +19,7 @@ class RegisterRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array  //後で意味を詳しく調べる。
      */
     public function rules()
     {
@@ -29,11 +29,11 @@ class RegisterRequest extends FormRequest
 
 
             //ユーザー登録
-            'UserName' => 'required|string|min:2|max:20',
-            'MailAdress' => 'required|email|unique:users|min:5|max:40',
-            'Password' => 'required|regex:/^[a-zA-Z0-9]*$/|min:8|max:20',
-            'PasswordConfirm' => 'required|confirmed',
+            'username' => 'required|string|min:2|max:20',
+            'mail' => 'required|string|unique:users,mail|min:5|max:40', //email
+            'password' => 'required|regex:/^[a-zA-Z0-9]*$/|min:8|max:20|confirmed', //alpha_num
         ];
+//        dd($rules);
     }
 
 
@@ -41,21 +41,23 @@ class RegisterRequest extends FormRequest
     {
         return [
             //ここからエラーメッセージ
-            'UserName.required' => 'ユーザー名を入力してください',
-            'UserName.string' => 'ユーザー名は文字列で入力してください',
-            'UserName.min' => 'ユーザー名は最低2文字以上で入力してください',
-            'UserName.max' => 'ユーザー名は20文字以内で入力してください',
-            'MailAdress.required' => 'メールアドレスを入力してください',
-            'MailAdress.email' => '有効なメールアドレスを入力してください',
-            'MailAdress.unique' => 'このメールアドレスは既に使用されています',
-            'MailAdress.min' => 'メールアドレスは最低2文字以上で入力してください',
-            'MailAdress.max' => 'メールアドレスは40文字以内で入力してください',
-            'Password.required' => 'パスワードを入力してください',
-            'Password.regex' => 'パスワードは英数字のみ使用できます',
-            'Password.min' => 'パスワードは8文字以上で入力してください',
-            'Password.max' => 'パスワードは20文字以内で入力してください',
-            'PasswordConfirm.required' => 'パスワード確認を入力してください',
-            'PasswordConfirm.confirmed' => 'パスワードとパスワード確認が一致しません',
+//            'required' => 'ユーザー名を入力してください',
+            'username.required' => 'ユーザー名を入力してください',
+            'username.string' => 'ユーザー名は文字列で入力してください',
+            'username.min' => 'ユーザー名は最低2文字以上で入力してください',
+            'username.max' => 'ユーザー名は20文字以内で入力してください',
+            'mail.required' => 'メールアドレスを入力してください',
+            'mail.email' => '有効なメールアドレスを入力してください',
+            'mail.unique' => 'このメールアドレスは既に使用されています',
+            'mail.min' => 'メールアドレスは最低2文字以上で入力してください',
+            'mail.max' => 'メールアドレスは40文字以内で入力してください',
+            'password.required' => 'パスワードを入力してください',
+            'password.regex' => 'パスワードは英数字のみ使用できます',
+            'password.min' => 'パスワードは8文字以上で入力してください',
+            'password.max' => 'パスワードは20文字以内で入力してください',
+//            'passwordConfirm.required' => 'パスワード確認を入力してください',
+//            'passwordConfirm.confirmed' => 'パスワードとパスワード確認が一致しません',
         ];
+//        dd($rules);
     }
 }

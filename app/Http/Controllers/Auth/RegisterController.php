@@ -38,37 +38,35 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-
     }
 
 
 
     public function registerPost(RegisterRequest $request){
-
-            $username = $request->input('username');
+//        dd($request);
+            $username = $request->input('username'); //「username」＝htmlのインプットタグのname属性
             $mail = $request->input('mail');
             $password = $request->input('password');
 
-            User::create([
-                'username' => $username,
+
+            User::create([ //作るよ
+                'username' => $username, //「username」＝DBのカラム　「$username」＝
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
+
+            //セッションの保存
+            $request->session()->put('username',$request->username);
+
             return redirect('added');
         }
 
 
-
-
      public function registerView(){ //データをもらってないから空欄
-         // if($request->isMethod('get')){
-
-             return view('auth.register');
-
-        }
-
-    // }
-
+         // if($request->isMethod('get'))
+            return view('auth.register');
+        //}
+    }
 
     public function added(){
         return view('auth.added');
