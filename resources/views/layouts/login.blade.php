@@ -22,10 +22,12 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
+            <!--「href="/top"」でリンク追加-->
+        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>{{session('username')}}さん<img src="images/arrow.png"></p>
+                    <!--Auth::user()->DBでのカラム名}}-->
+                    <p>{{Auth::user()->username}}さん<img src="images/arrow.png"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>

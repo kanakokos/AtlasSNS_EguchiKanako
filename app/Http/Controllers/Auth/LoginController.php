@@ -47,6 +47,9 @@ class LoginController extends Controller
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
                 return redirect('/top');
+
+//ユーザー名を表示させるための記述？？？
+
             }
         }
         return view("auth.login");
