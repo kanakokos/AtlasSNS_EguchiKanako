@@ -27,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected $redirectTo = '/top';
 
     /**
      * Create a new controller instance.
@@ -48,10 +49,14 @@ class LoginController extends Controller
             if(Auth::attempt($data)){
                 return redirect('/top');
 
-//ユーザー名を表示させるための記述？？？
-
             }
         }
         return view("auth.login");
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
+    }
+
 }

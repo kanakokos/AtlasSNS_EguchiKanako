@@ -23,44 +23,58 @@
     <header>
         <div id = "head">
             <!--「href="/top"」でリンク追加-->
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <!--Auth::user()->DBでのカラム名}}-->
-                    <p>{{Auth::user()->username}}さん<img src="images/arrow.png"></p>
+            <div>
+                <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+                <!--Auth::user()->DBでのカラム名}}-->
+                <p>{{Auth::user()->username}}さん<img src="images/arrow.png"></p>
                 <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+                    <!--アコーディオンメニュー-->
+                    <div class="accordion-container">
+                        <div class="menu-trigger">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <nav class="menu">
+                        <ul>
+                            <li><a href="/top">ホーム</a></li>
+                            <li><a href="/profile">プロフィール</a></li>
+                            <li><a href="/logout">ログアウト</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                </div>
             </div>
         </div>
     </header>
+
+
+
+
     <div id="row">
         <div id="container">
             @yield('content')
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{session('username')}}さんの</p>
+                <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+                <p class="btn"><a href="/followList">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
     </footer>
-    <script src="app.js"></script>  <!--JavaScriptファイルのURL-->
-    <script src="JavaScriptファイルのURL"></script>
+    <!--<script src="app.js"></script>  JavaScriptファイルのURL-->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

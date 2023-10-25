@@ -14,24 +14,6 @@ class Authenticate extends Middleware
      */
 
 
-    // public function handle($request, Closure $next, $guard = null)
-    // {
-    //     if (Auth::guard($guard)->guest()) { //
-    //         if ($request->ajax() || $request->wantsJson()) {
-    //             return response('Unauthorized.', 401);
-    //         } else {
-    //             return redirect()->route('user.login');
-    //         }
-    //     }
-
-    //     return $next($request);
-    // }
-
-
-
-
-
-
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {

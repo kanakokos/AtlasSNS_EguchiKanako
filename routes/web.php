@@ -58,7 +58,6 @@ Route::post('/added', 'Auth\RegisterController@added');
     Route::get('/follower-list', 'PostsController@index')->name('follower-list')->middleware('auth');
 
 
-
 //     Route::get('/top', ['user' => 'PostsController@index','as' => 'user.top'])->name('top');
 
 //     Route::get('/profile', ['user' => 'UsersController@profile','as' => 'user.profile'])->name('profile');
