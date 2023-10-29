@@ -25,8 +25,8 @@
             <!--「href="/top"」でリンク追加-->
             <div>
                 <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-                <!--Auth::user()->DBでのカラム名}}-->
-                <p>{{Auth::user()->username}}さん<img src="images/arrow.png"></p>
+                <!--Auth::user()->DBでのテーブルのカラム名}}-->
+                <p>{{Auth::user()->username}}さん<img src="images/icon1.png"></p>
                 <div>
                     <!--アコーディオンメニュー-->
                     <div class="accordion-container">

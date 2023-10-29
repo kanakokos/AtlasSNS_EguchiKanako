@@ -10,6 +10,7 @@ header {
     background: #186AC9;
 }
 
+
 /* アコーディオンメニュー */
 
 .menu-trigger {
@@ -59,16 +60,18 @@ header {
     visibility: hidden;
     /* transform: translateY(-100%); */
     transition: .5s ease-in-out;
-    height: 100vh;
+    height: 15vh;
 }
 
 .menu.active {
     visibility: visible;
     /* transform: translateY(0%); */
     transition: .5s ease-in-out;
-
 }
 
+.accordion-container {
+    width: 200px;
+}
 
 
 

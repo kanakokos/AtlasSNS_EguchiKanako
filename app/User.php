@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [  //$fillable=変更していいよ
-        'username', 'mail', 'password',
+        'username', 'mail', 'password', 'bio', 'images',
     ];
 
     /**
@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    // hasMany結合(主テーブル -> 従テーブル)
+    //usersテーブルは主テーブルなので「hasMany」（1対多結合） or 「hasOne」（1対1結合）を設定
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
 }

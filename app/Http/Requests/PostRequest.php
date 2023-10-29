@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             //つぶやき投稿　バリデーション
-            'Post' => 'required|string|min:1|max:150',
+            'post' => 'required|string|min:1|max:150',
         ];
     }
 
@@ -34,10 +34,10 @@ class PostRequest extends FormRequest
     {
         return [
             //ここからエラーメッセージ
-            'Post.required' => '文字を入力してください',
-            'Post.string' => '文字列で入力してください',
-            'Post.min' => 'ユーザー名は最低1文字以上で入力してください',
-            'Post.max' => 'ユーザー名は150文字以内で入力してください',
+            'post.required' => '文字を入力してください',
+            'post.string' => '文字列で入力してください',
+            'post.min' => '文字は最低1文字以上で入力してください',
+            'post.max' => '文字は150文字以内で入力してください',
         ];
     }
 }

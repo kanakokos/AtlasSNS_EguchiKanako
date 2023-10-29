@@ -50,6 +50,10 @@ Route::post('/added', 'Auth\RegisterController@added');
 
     Route::get('/top', 'PostsController@index')->name('top')->middleware('auth');
 
+    Route::post('/index', 'PostsController@indexPost')->name('index')->middleware('auth');
+    Route::get('/index', 'PostsController@indexView')->name('index')->middleware('auth');
+
+
     Route::get('/profile', 'UsersController@profile')->name('profile')->middleware('auth');
 
     Route::get('/search', 'UsersController@index')->name('search')->middleware('auth');
