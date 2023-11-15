@@ -37,13 +37,17 @@ class PostsController extends Controller
     //     //}
     // }
 
-    public function index(){
-        return view('posts.index');
+    public function index()
+    {
+        $posts = Post::get();
+        return view('posts.index',['posts'=>$posts]);
     }
 
 
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+        return redirect('top');
+    }
 
-}
-
-
-//投稿一覧
+    }

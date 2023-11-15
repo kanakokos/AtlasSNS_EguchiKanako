@@ -53,6 +53,9 @@ Route::post('/added', 'Auth\RegisterController@added');
     Route::post('/index', 'PostsController@indexPost')->name('index')->middleware('auth');
     Route::get('/index', 'PostsController@indexView')->name('index')->middleware('auth');
 
+//ルーティングが間違ってるとエラーが出る
+    Route::get('/post/{id}/delete', 'PostsController@delete');
+
 
     Route::get('/profile', 'UsersController@profile')->name('profile')->middleware('auth');
 
@@ -60,6 +63,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 
     Route::get('/follow-list', 'PostsController@index')->name('follow-list')->middleware('auth');
     Route::get('/follower-list', 'PostsController@index')->name('follower-list')->middleware('auth');
+
+
 
 
 //     Route::get('/top', ['user' => 'PostsController@index','as' => 'user.top'])->name('top');
