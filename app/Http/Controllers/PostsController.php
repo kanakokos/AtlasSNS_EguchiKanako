@@ -39,7 +39,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::get();
+        // $posts = Post::get()
+        $posts = Post::get()->sortByDesc('created_at');
         return view('posts.index',['posts'=>$posts]);
     }
 
@@ -49,5 +50,39 @@ class PostsController extends Controller
         Post::where('id', $id)->delete();
         return redirect('top');
     }
+
+//編集中
+    public function update(Request $request)
+    {
+        $request->validate([
+            'upPost' => 'required|string|min:1|max:150',
+        ]);
+
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+
+        // Post::update([
+        //     'upPost' => $up_post,
+        // ]);
+
+        Post::where('id', $id)->update([
+            'post' => $up_post
+        ]);
+
+        // $post->update([
+        //     'post' => $post
+        // ]);
+
+    //     Post::query()
+    //     ->where('id', $id)
+    //     ->update(
+    //     ['post' => $up_post]
+    // );
+
+    return redirect('top');
+    }
+
+
+
 
     }

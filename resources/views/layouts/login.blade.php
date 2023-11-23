@@ -8,6 +8,10 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+    <!-- ↓↓bootstrapのために追記↓↓ -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" >
+
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -73,8 +77,12 @@
     </div>
     <footer>
     </footer>
-    <!--<script src="app.js"></script>  JavaScriptファイルのURL-->
+    <!-- <script src="app.js"></script> JavaScriptファイルのURL -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="js/script.js"></script>
+    <!-- ↓↓bootstrapのために追記↓↓ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>

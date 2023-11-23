@@ -53,8 +53,11 @@ Route::post('/added', 'Auth\RegisterController@added');
     Route::post('/index', 'PostsController@indexPost')->name('index')->middleware('auth');
     Route::get('/index', 'PostsController@indexView')->name('index')->middleware('auth');
 
-//ルーティングが間違ってるとエラーが出る
+
     Route::get('/post/{id}/delete', 'PostsController@delete');
+
+    Route::post('/post/update', 'PostsController@update')->name('update');
+
 
 
     Route::get('/profile', 'UsersController@profile')->name('profile')->middleware('auth');
