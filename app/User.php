@@ -34,4 +34,72 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+
+    //どのクラス(第一引数)のどのテーブル(第二引数)でどのカラム(第三引数)がどのカラム(第四引数)をどうする(メソッド名)
+
+    // フォロー→フォロワー
+    public function followings()
+    {
+    return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
+    }
+
+    // フォロワー→フォロー （フォローされる）
+    public function followers()
+    {
+    return $this->belongsToMany('App\User', 'follows', 'followed_id', 'following_id')->withTimestamps();
+    }
+
+
+
+
+    //フォローしているか確認
+    public function isFollowing(Int $user_id)
+    {
+        // attach=すべてのデータが中間テーブルに保存
+        // sync=重複なしで登録したい場合
+        // return $this->followed_id()->attach($user_id);
+        return (boolean) $this->followings()->where('followed_id', $user_id)->first(['follows.id']);
+    }
+
+    //フォローされているか
+    public function isFollowed(Int $user_id)
+    {
+        // attach=すべてのデータが中間テーブルに保存
+        // sync=重複なしで登録したい場合
+        // return $this->followed_id()->attach($user_id);
+        return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
+    }
+
+
+
+    // フォローする
+    public function follow(Int $user_id)
+    {
+        return $this->followings()->attach($user_id);
+    }
+
+    // フォロー解除する
+    public function unfollow(Int $user_id)
+    {
+        return $this->followings()->detach($user_id);
+    }
+
+
+
+    public function follow_each(){
+        //ユーザがフォロー中のユーザを取得
+        $userIds = $this->followings()->pluck('users.id')->toArray();
+       //相互フォロー中のユーザを取得
+        $follow_each = $this->followers()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+       //相互フォロー中のユーザを返す
+        return $follow_each;
+    }
+
+
+
+
+
+
+
+
 }

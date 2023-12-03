@@ -55,17 +55,27 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 
     Route::get('/post/{id}/delete', 'PostsController@delete');
-
     Route::post('/post/update', 'PostsController@update')->name('update');
 
 
 
     Route::get('/profile', 'UsersController@profile')->name('profile')->middleware('auth');
 
-    Route::get('/search', 'UsersController@index')->name('search')->middleware('auth');
 
-    Route::get('/follow-list', 'PostsController@index')->name('follow-list')->middleware('auth');
-    Route::get('/follower-list', 'PostsController@index')->name('follower-list')->middleware('auth');
+    //UsersControllerでページ表示のメソッドは不要だが、Post、Get通信それぞれあて先は必要になるのでルーティングが二つになる
+    Route::get('/search', 'UsersController@search')->name('users.search')->middleware('auth');
+    Route::post('/search', 'UsersController@search')->middleware('auth');
+
+
+    Route::get('/following/{id}', 'UsersController@following')->name('users.follow')->middleware('auth');
+    Route::get('/unfollow/{id}', 'UsersController@unfollow')->name('users.unfollow')->middleware('auth');
+
+
+
+
+
+    Route::get('/followList', 'FollowsController@followList')->name('followList')->middleware('auth');
+    Route::get('/followerList', 'FollowsController@followerList')->name('followerList')->middleware('auth');
 
 
 
