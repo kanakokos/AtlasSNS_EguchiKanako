@@ -11,6 +11,19 @@
   @else
   <td><button type="button"><a href="/following/{{$user->id}}">フォロー</a></button></td>
 @endif
+<br>
+<br>
+@if($user->posts->count() > 0)
+@foreach($user->posts()->orderBy('id','desc')->get() as $post)
+  <img class="profile-image" src="{{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
+  {{ $user->username }}
+  {{ $post->post }}
+  {{ $post->created_at }}
+<br>
+@endforeach
+@else
+    <p>投稿がありません。</p>
+@endif
 
 
 @endsection
