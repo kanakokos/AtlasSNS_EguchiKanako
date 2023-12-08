@@ -59,7 +59,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 
 
-    Route::get('/profile', 'UsersController@profile')->name('profile')->middleware('auth');
+    Route::get('profile/{id}', 'UsersController@profile')->name('profile')->middleware('auth');
 
 
     //UsersControllerでページ表示のメソッドは不要だが、Post、Get通信それぞれあて先は必要になるのでルーティングが二つになる

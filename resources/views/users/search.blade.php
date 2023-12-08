@@ -21,14 +21,14 @@
 @foreach($users as $user)
 @if($user->id !== Auth::id()) <!-- ログイン中のユーザーは表示しない -->
 <tr>
-  <td><img class="image-circle" src="{{ asset('images/' . $user->images ) }}" alt="ユーザーアイコン"></td>
+  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('images/' . $user->images ) }}" alt="ユーザーアイコン"></a></td>
   <td>{{ $user->username}}</td>
   @if(Auth::user()->isFollowing($user->id))
   <td><button type="button"><a href="/unfollow/{{$user->id}}">解除</a></button></td>
   @else
   <td><button type="button"><a href="/following/{{$user->id}}">フォロー</a></button></td>
   @endif
-</tr>
+</tr><br>
 @endif <!-- 開けたら閉じる -->
 @endforeach
 

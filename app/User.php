@@ -27,13 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     // hasMany結合(主テーブル -> 従テーブル)
     //usersテーブルは主テーブルなので「hasMany」（1対多結合） or 「hasOne」（1対1結合）を設定
     public function posts() {
         return $this->hasMany('App\Post');
     }
-
 
     //どのクラス(第一引数)のどのテーブル(第二引数)でどのカラム(第三引数)がどのカラム(第四引数)をどうする(メソッド名)
 
@@ -52,12 +50,18 @@ class User extends Authenticatable
 
 
 
+
+
+
+
     //フォローしているか確認
     public function isFollowing(Int $user_id)
     {
         // attach=すべてのデータが中間テーブルに保存
         // sync=重複なしで登録したい場合
         // return $this->followed_id()->attach($user_id);
+
+        //boolean=”true”か”false”のどちらかの真偽値を扱う場合に使用
         return (boolean) $this->followings()->where('followed_id', $user_id)->first(['follows.id']);
     }
 
@@ -86,18 +90,24 @@ class User extends Authenticatable
 
 
 
-    public function follow_each(){
-        //ユーザがフォロー中のユーザを取得
-        $userIds = $this->followings()->pluck('users.id')->toArray();
-       //相互フォロー中のユーザを取得
-        $follow_each = $this->followers()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
-       //相互フォロー中のユーザを返す
-        return $follow_each;
-    }
+    // フォローリスト
+public function followingPosts()
+{
+    // フォローしているユーザーのIDを取得
+    $followingUserIds = $this->followings->pluck('id');
+    // フォローしているユーザーの投稿を取得
+    return Post::whereIn('user_id', $followingUserIds)->get();
+}
 
 
-
-
+    // フォロワーリスト
+public function followerPosts()
+{
+    // フォローしているユーザーのIDを取得
+    $followerUserIds = $this->followers->pluck('id');
+    // フォローしているユーザーの投稿を取得
+    return Post::whereIn('user_id', $followerUserIds)->get();
+}
 
 
 

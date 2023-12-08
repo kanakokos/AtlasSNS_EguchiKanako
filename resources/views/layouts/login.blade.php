@@ -28,7 +28,7 @@
         <div id = "head">
             <!--「href="/top"」でリンク追加-->
             <div>
-                <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+                <h1><a href="/top"><img src="images/atlas.png" width="120px" height="auto"></a></h1>
                 <!--Auth::user()->DBでのテーブルのカラム名}}-->
                 <p>{{Auth::user()->username}}さん<img src="images/icon1.png"></p>
                 <div>
@@ -63,12 +63,12 @@
                 <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ auth()->user()->followings->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/followList">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ auth()->user()->followers->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
             </div>

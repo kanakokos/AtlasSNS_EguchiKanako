@@ -22,7 +22,7 @@
 @foreach ($posts as $post)
 <tr>
   <!-- <div>{{ $post->id}}</div> -->
-  <td><a href="{{$post->user_id}}/profile"><img class="image-circle" src="{{ asset('images/' . $post->images ) }}" alt="ユーザーアイコン"></a></td>
+  <td><a href="/profile"><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></a></td>
   <td>{{ $post->user->username}}</td>
   <td>{{ $post->created_at}}</td>
   <td>{{ $post->post}}</td>
@@ -43,7 +43,7 @@
   </td>
 
   @endif
-</tr>
+</tr><br>
 @endforeach
 
 <!-- 投稿編集モーダル -->

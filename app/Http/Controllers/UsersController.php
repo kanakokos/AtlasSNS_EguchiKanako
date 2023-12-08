@@ -9,9 +9,24 @@ use App\User;
 class UsersController extends Controller
 {
     //
-    public function profile(){
-        return view('users.profile');
+    public function profile($id){
+        // dd($id);
+        // $user = User::where('id', $id)->first();
+        // $user = User::get();
+        //find指定したキーの要素だけ取得
+        $user = User::find($id);
+        return view('users.profile', ['user'=>$user]);
     }
+
+
+
+
+
+
+
+
+
+
 
     //searchを表示させるために記述したが、ページを表示させるためだけのときも$userなどは読み込む必要があるので下で記述しているsearchメソッドのみで良い
     // public function index(){
@@ -76,6 +91,8 @@ class UsersController extends Controller
             return back();
         }
     }
+
+
 
 
 }
