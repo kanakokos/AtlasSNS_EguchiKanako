@@ -22,7 +22,7 @@
 @foreach ($posts as $post)
 <tr>
   <!-- <div>{{ $post->id}}</div> -->
-  <td><a href="/profile"><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></a></td>
+  <td><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></td>
   <td>{{ $post->user->username}}</td>
   <td>{{ $post->created_at}}</td>
   <td>{{ $post->post}}</td>

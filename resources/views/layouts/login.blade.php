@@ -28,9 +28,9 @@
         <div id = "head">
             <!--「href="/top"」でリンク追加-->
             <div>
-                <h1><a href="/top"><img src="images/atlas.png" width="120px" height="auto"></a></h1>
+                <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}" width="120px" height="auto"></a></h1>
                 <!--Auth::user()->DBでのテーブルのカラム名}}-->
-                <p>{{Auth::user()->username}}さん<img src="images/icon1.png"></p>
+                <p>{{Auth::user()->username}}さん<img src="{{ asset('images/' . Auth::user()->images ) }}"></p>
                 <div>
                     <!--アコーディオンメニュー-->
                     <div class="accordion-container">
@@ -41,7 +41,7 @@
                         <nav class="menu">
                         <ul>
                             <li><a href="/top">ホーム</a></li>
-                            <li><a href="/profile">プロフィール</a></li>
+                            <li><a href="/profile/{{ Auth::user()->id }}">プロフィール編集</a></li>
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>
                     </nav>
@@ -77,9 +77,10 @@
     </div>
     <footer>
     </footer>
-    <!-- <script src="app.js"></script> JavaScriptファイルのURL -->
+    <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+    <script src="{{ asset('js/script.js') }}"></script>
     <!-- ↓↓bootstrapのために追記↓↓ -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

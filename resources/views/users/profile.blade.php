@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-
+<!-- プロフィール -->
 <img class="profile-image" src="{{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
 {{ $user->username }}
 <div>自己紹介文箇所{{ $user->bio }}</div>
@@ -13,6 +13,7 @@
 @endif
 <br>
 <br>
+<!-- 投稿一覧 -->
 @if($user->posts->count() > 0)
 @foreach($user->posts()->orderBy('id','desc')->get() as $post)
   <img class="profile-image" src="{{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
@@ -25,5 +26,21 @@
     <p>投稿がありません。</p>
 @endif
 
+
+<!-- ログインユーザー -->
+
+@if(Auth::id()==$user->id)
+
+<div>
+  <div>user name</div>
+  <div>mail adress</div>
+  <div>password</div>
+  <div>password comfirm</div>
+  <div>bio</div>
+  <div>icon image</div>
+  <input type="submit" value="更新">
+</div>
+
+@endif
 
 @endsection
