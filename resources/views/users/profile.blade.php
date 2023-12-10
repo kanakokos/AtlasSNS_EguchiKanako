@@ -1,7 +1,8 @@
 @extends('layouts.login')
 
 @section('content')
-<!-- プロフィール -->
+<!-- 他ユーザーのプロフィール（ログインユーザー以外に見せたい） -->
+@unless(Auth::id()==$user->id)
 <img class="profile-image" src="{{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
 {{ $user->username }}
 <div>自己紹介文箇所{{ $user->bio }}</div>
@@ -25,12 +26,11 @@
 @else
     <p>投稿がありません。</p>
 @endif
+@endif
 
-
-<!-- ログインユーザー -->
+<!-- ログインユーザーの表示 -->
 
 @if(Auth::id()==$user->id)
-
 <div>
   <div>user name</div>
   <div>mail adress</div>
