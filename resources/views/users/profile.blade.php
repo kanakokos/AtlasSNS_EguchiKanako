@@ -32,12 +32,18 @@
 
 @if(Auth::id()==$user->id)
 <div>
-  <div>user name</div>
-  <div>mail adress</div>
-  <div>password</div>
-  <div>password comfirm</div>
-  <div>bio</div>
-  <div>icon image</div>
+  <p>name</p>
+  <input type="text" name="name" value="{{ $user->username }}" />
+  <p>mail</p>
+  <input type="text" name="mail" value="{{ $user->mail }}" />
+  <p>password</p>
+  <input type="text" name="password" value="{{ $user->password }}" />
+  <p>password comfirm</p>
+  <input type="text" name="password comfirm" value="{{ $user->password }}" />
+  <p>bio</p>
+  <input type="text" name="bio" value="{{ $user->bio }}" />
+  <p>icon image</p>
+  <input type="file" class="custom-file-input" id="inputFile" name="image">
   <input type="submit" value="更新">
 </div>
 
