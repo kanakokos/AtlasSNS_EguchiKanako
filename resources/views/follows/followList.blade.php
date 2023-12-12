@@ -9,22 +9,14 @@
 @endforeach
 <br>
 <br>
-@foreach($followingUsers as $user)
+@foreach ($posts as $post)
 <tr>
-  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('images/' . $user->images ) }}" alt="ユーザーアイコン"></a></td>
-  <td>{{ $user->username }}</td>
-  @if($user->posts->count() > 0)
-    @foreach($user->posts()->latest()->limit(1)->get() as $post)
-    <td>{{ $post->created_at }}</td>
-    <td>{{ $post->post }}</td>
-    </tr><br>
-    @endforeach
-  @else
-    <td>投稿がありません</td><br>
-  @endif
+  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></a></td>
+  <td>{{ $post->user->username}}</td>
+  <td>{{ $post->created_at}}</td>
+  <td>{{ $post->post}}</td>
+</tr><br>
 
 @endforeach
-
-
 
 @endsection

@@ -41,6 +41,7 @@ class PostsController extends Controller
     {
         // $posts = Post::get()
         // $posts = Post::get()->sortByDesc('created_at');
+        // $posts = Post::query()->whereIn('user_id', Auth::user()->followings()->pluck('followed_id'))->latest()->get();
         $posts = Post::query()->whereIn('user_id', Auth::user()->followings()->pluck('followed_id'))->orWhere('user_id', Auth::user()->id)->latest()->get();
         return view('posts.index',['posts'=>$posts]);
     }
