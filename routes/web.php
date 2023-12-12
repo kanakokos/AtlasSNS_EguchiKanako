@@ -59,7 +59,9 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 
 
-    Route::get('profile/{id}', 'UsersController@profile')->name('profile')->middleware('auth');
+    Route::get('profile/{id}', 'UsersController@profileView')->name('profile.view')->middleware('auth');
+    Route::post('profile/{id}/update', 'UsersController@profileUpdate')->name('profile.update')->middleware('auth');
+
 
 
     //UsersControllerでページ表示のメソッドは不要だが、Post、Get通信それぞれあて先は必要になるのでルーティングが二つになる
@@ -69,7 +71,6 @@ Route::post('/added', 'Auth\RegisterController@added');
 
     Route::get('/following/{id}', 'UsersController@following')->name('users.follow')->middleware('auth');
     Route::get('/unfollow/{id}', 'UsersController@unfollow')->name('users.unfollow')->middleware('auth');
-
 
 
 

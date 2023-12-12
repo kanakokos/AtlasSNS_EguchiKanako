@@ -31,6 +31,7 @@
 <!-- ログインユーザーの表示 -->
 
 @if(Auth::id()==$user->id)
+
 <div>
   <p>name</p>
   <input type="text" name="name" value="{{ $user->username }}" />

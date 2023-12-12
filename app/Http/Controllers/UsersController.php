@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -9,16 +9,69 @@ use App\User;
 class UsersController extends Controller
 {
     //
-    public function profile($id){
+        // public function profile(ProfileRequest $id){
+        // // dd($id);
+        // // $user = User::where('id', $id)->first();
+        // // $user = User::get();
+        // //find指定したキーの要素だけ取得
+        // $user = User::find($id);
+
+        // $user->username = $request->input('username');
+        // $user->mail = $request->input('mail');
+        // $user->password = $request->input('password');
+        // $user->bio = $request->input('bio');
+
+        // $uploadFile = $request->file('image');
+        // if (!empty($uploadFile)) {
+        //     $thumbnailName = $request->file('image')->hashName();
+        //     $request->file('image')->storeAs('public/images', $thumbnailName);
+
+        //     $authUser->image = $thumbnailName;
+        // }
+
+        // $authUser->save();
+
+        // return redirect('top')->with('flash_message', '変更しました');
+
+        // }
+
+
+
+    public function profileView($id){
         // dd($id);
         // $user = User::where('id', $id)->first();
         // $user = User::get();
         //find指定したキーの要素だけ取得
         $user = User::find($id);
+
         return view('users.profile', ['user'=>$user]);
     }
 
 
+//
+    public function profileUpdate(ProfileRequest $user)
+    {
+        // dd($request);
+        $user = Auth::user();
+
+        $user->username = $request->input('username');
+        $user->mail = $request->input('mail');
+        $user->password = $request->input('password');
+        $user->bio = $request->input('bio');
+
+        $uploadFile = $request->file('image');
+        if (!empty($uploadFile)) {
+            $thumbnailName = $request->file('image')->hashName();
+            $request->file('image')->storeAs('public/images', $thumbnailName);
+
+            $authUser->image = $thumbnailName;
+        }
+
+        $authUser->save();
+
+        return redirect('top')->with('flash_message', '変更しました');
+
+        }
 
 
 

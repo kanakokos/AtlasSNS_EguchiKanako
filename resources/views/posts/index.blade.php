@@ -19,9 +19,11 @@
 {!! Form::close() !!}
 
 <!--投稿一覧-->
-@foreach ($posts as $post)
-<tr>
+@if($posts->count() > 0)
+  @foreach ($posts as $post)
+  <tr>
   <!-- <div>{{ $post->id}}</div> -->
+
   <td><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></td>
   <td>{{ $post->user->username}}</td>
   <td>{{ $post->created_at}}</td>
@@ -91,6 +93,8 @@
   </div>
 </div> -->
 
-
+@else
+    <p>投稿がありません。</p>
+@endif
 
 @endsection
