@@ -9,43 +9,48 @@
 <li class="post-error">{{$error}}</li>
 @endforeach
 
-
-<!--{{ Form::submit('登録') }}-->
-<!-- {{form::input('text','post',null)}} -->
-{{ Form::text('post',null,['class' => 'input']) }}
-
-<input type="image" src="images/post.png" alt="登録" width="30px" height="auto">
-
-{!! Form::close() !!}
-
+<div class="auth_content">
+  {{ Form::text('post',null,['class' => 'input', 'style' => 'border-radius: 4px; border: none;']) }}
+  <input type="image" src="images/post.png" alt="登録" width="30px" height="auto">
+  {!! Form::close() !!}
+</div>
 <!--投稿一覧-->
+
 @if($posts->count() > 0)
-  @foreach ($posts as $post)
-  <tr>
-  <!-- <div>{{ $post->id}}</div> -->
+@foreach ($posts as $post)
 
-  <td><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></td>
-  <td>{{ $post->user->username}}</td>
-  <td>{{ $post->created_at}}</td>
-  <td>{{ $post->post}}</td>
-  @if(Auth::id()==$post->user_id)
+<div>
+  <ul>
+    <li class="post-block">
+      <figure><img class="image-circle" src="{{ asset('storage/images/' . $post->user->images ) }}" alt="ユーザーアイコン" width="50px" height="auto"></figure>
+      <div class="post-content">
+        <div class="post-name">
+          <div>{{ $post->user->username}}</div>
+          <div>{{ $post->created_at}}</div>
+        </div>
+        <div>{{ $post->post}}</div>
+@if(Auth::id()==$post->user_id)
   <!-- 更新ボタン -->
-      <td> <!-- data-でModalやJSに値を渡す -->
-        <!-- <button type="button" class="btn" data-toggle="modal" data-target="#UpdateModal" data-post-contents="{{ $post->post }}" data-post-id="{{$post->id}}">
+      <div class="auth_content">
+        <div>
+          <!-- data-でModalやJSに値を渡す -->
+          <!-- <button type="button" class="btn" data-toggle="modal" data-target="#UpdateModal" data-post-contents="{{ $post->post }}" data-post-id="{{$post->id}}">
           <img src="{{ asset('images/edit.png') }}" alt="編集"  width="25px" height="auto">
-        </button> -->
-        <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="{{ asset('images/edit.png') }}" alt="編集"  width="25px" height="auto"></a>
-
-      </td>
+          </button> -->
+          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="{{ asset('images/edit.png') }}" alt="編集"  width="30px" height="auto"></a>
+        </div>
 <!-- 削除ボタン -->
 @csrf
-  <td>
-    <a class="" href="/post/{{$post->id}}/delete" onclick="return confirm('この投稿をを削除します。よろしいでしょうか？')">
-    <img src="images/trash.png" alt="削除" width="25px" height="auto"></a>
-  </td>
-
-  @endif
-</tr><br>
+        <div>
+          <a class="" href="/post/{{$post->id}}/delete" onclick="return confirm('この投稿をを削除します。よろしいでしょうか？')">
+          <img src="images/trash.png" alt="削除" width="30px" height="auto"></a>
+        </div>
+      </div>
+@endif
+      </div>
+    </li>
+  </ul>
+</div>
 @endforeach
 
 <!-- 投稿編集モーダル -->

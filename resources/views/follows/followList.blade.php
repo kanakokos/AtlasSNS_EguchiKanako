@@ -4,18 +4,26 @@
 
 @foreach($followingUsers as $user)
 <tr>
-  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('images/' . $user->images ) }}" alt="ユーザーアイコン"></a></td>
+  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $user->images ) }}" alt="ユーザーアイコン" width="50px" height="auto"></a></td>
 </tr>
 @endforeach
 <br>
 <br>
 @foreach ($posts as $post)
-<tr>
-  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('images/' . $post->user->images ) }}" alt="ユーザーアイコン"></a></td>
-  <td>{{ $post->user->username}}</td>
-  <td>{{ $post->created_at}}</td>
-  <td>{{ $post->post}}</td>
-</tr><br>
+<div>
+  <ul>
+    <li class="post-block">
+      <figure><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $post->user->images ) }}" alt="ユーザーアイコン" width="50px" height="auto"></a></figure>
+      <div class="post-content">
+        <div class="post-name">
+          <div>{{ $post->user->username}}</div>
+          <div>{{ $post->created_at}}</div>
+        </div>
+        <div>{{ $post->post}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
 
 @endforeach
 

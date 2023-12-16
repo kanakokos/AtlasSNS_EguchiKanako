@@ -8,7 +8,9 @@ body {}
 
 header {
     background: #186AC9;
+    display: flex;
 }
+
 
 
 /* アコーディオンメニュー */
@@ -70,7 +72,11 @@ header {
 }
 
 .accordion-container {
-    width: 200px;
+    width: 50px;
+}
+
+#side-bar {
+    background-color: white;
 }
 
 
@@ -89,4 +95,41 @@ header {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+
+
+/* 投稿（index） */
+
+li {
+    list-style: none;
+    border-bottom: 1px solid #a9a9a9;
+    display: flex;
+}
+
+
+.post-content {
+    width: 100%;
+    padding: 15px;
+}
+
+.post-content div {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.post-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.auth_content {
+    display: flex;
+    justify-content: right;
+}
+
+
+.post-block {
+    background-color: white;
 }

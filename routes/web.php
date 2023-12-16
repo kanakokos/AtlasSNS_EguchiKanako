@@ -60,7 +60,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 
     Route::get('profile/{id}', 'UsersController@profileView')->name('profile.view')->middleware('auth');
-    Route::post('profile/{id}/update', 'UsersController@profileUpdate')->name('profile.update')->middleware('auth');
+    Route::post('profile/update', 'UsersController@profileUpdate')->name('profile.update')->middleware('auth');
 
 
 

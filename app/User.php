@@ -109,7 +109,5 @@ public function followerPosts()
     return Post::whereIn('user_id', $followerUserIds)->get();
 }
 
-// $posts = Post::query()->whereIn('user_id', Auth::user()->followings()->pluck('followed_id'))->latest()->get();
-
 
 }

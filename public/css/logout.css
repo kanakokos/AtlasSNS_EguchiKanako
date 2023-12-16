@@ -6,33 +6,84 @@ html {
 }
 
 body {
-    height: 100%;
+    height: 90%;
     background-color: #D9AFD9;
-    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    background-image: linear-gradient(0deg, #fff462 0%, #1e90ff 100%);
+}
+
+header {
+    text-align: center;
 }
 
 p {
     color: #fff;
 }
 
+.logo {
+    font-size: 30px;
+    margin: 0;
+}
 
-
-.login-container {
-    position: relative;
+.logout_container {
+    /* position: relative; */
     text-align: center;
 
 }
 
-.login-form-content {
+.logout_form_content {
     background-color: rgba(0, 0, 0, .2);
-    height: 350px;
     width: 300px;
-    margin: 0 auto;
-    /*中心に寄せる*/
+    margin: 15px auto;
+    padding: 15px 10px;
+    border-radius: 15px;
+}
 
+
+
+.logout_form p {
+    text-align: left;
+    margin: 5px 0;
+    padding-left: 5px;
+}
+
+.logout_form p.move_link {
+    text-align: center;
+}
+
+.input {
+    border-radius: 4px;
+    border: none;
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.label {
+    text-align: left;
+}
+
+
+.custom_button {
+    background-color: #dc143c;
+    color: white;
+    border: none;
+    padding: 5px 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 2px;
+    margin-left: auto;
+    display: block;
+}
+
+.custom_button a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    display: block;
 
 }
 
-.login-form {
-    position: relative;
+a {
+    color: #fff;
+    text-decoration: none;
 }

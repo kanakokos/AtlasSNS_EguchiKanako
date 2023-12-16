@@ -30,7 +30,7 @@
             <div>
                 <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}" width="120px" height="auto"></a></h1>
                 <!--Auth::user()->DBでのテーブルのカラム名}}-->
-                <p>{{Auth::user()->username}}さん<img src="{{ asset('images/' . Auth::user()->images ) }}"></p>
+                <p>{{Auth::user()->username}}さん</p>
                 <div>
                     <!--アコーディオンメニュー-->
                     <div class="accordion-container">
@@ -47,6 +47,7 @@
                     </nav>
                 </div>
                 </div>
+                <img src="{{ asset('storage/images/' . Auth::user()->images ) }}" width="50px" height="auto">
             </div>
         </div>
     </header>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 
 class UsersController extends Controller
@@ -49,25 +50,28 @@ class UsersController extends Controller
 
 
 //
-    public function profileUpdate(ProfileRequest $user)
+    public function profileUpdate(ProfileRequest $request)
     {
         // dd($request);
         $user = Auth::user();
 
         $user->username = $request->input('username');
         $user->mail = $request->input('mail');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->bio = $request->input('bio');
+// dd($user);
+        // $user->save();
 
-        $uploadFile = $request->file('image');
+        $uploadFile = $request->file('iconimage');
+        // dd($request,$uploadFile);
         if (!empty($uploadFile)) {
-            $thumbnailName = $request->file('image')->hashName();
-            $request->file('image')->storeAs('public/images', $thumbnailName);
+            $thumbnailName = $request->file('iconimage')->hashName();
+            $request->file('iconimage')->storeAs('public/images', $thumbnailName);
 
-            $authUser->image = $thumbnailName;
+            $user->images = $thumbnailName;
         }
 
-        $authUser->save();
+        $user->save();
 
         return redirect('top')->with('flash_message', '変更しました');
 
