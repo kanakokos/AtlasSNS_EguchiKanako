@@ -2,20 +2,22 @@
 
 @section('content')
 
+<div class="user_list">
+  <p>Follow List</p>
+  <div class="list_icon">
 @foreach($followingUsers as $user)
-<tr>
-  <td><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $user->images ) }}" alt="ユーザーアイコン" width="50px" height="auto"></a></td>
-</tr>
+    <figure><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $user->images ) }}" alt="ユーザーアイコン" width="50px" height="50px"></a></figure>
 @endforeach
-<br>
-<br>
+  </div>
+</div>
+
 @foreach ($posts as $post)
 <div>
   <ul>
-    <li class="post-block">
-      <figure><a href="/profile/{{$user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $post->user->images ) }}" alt="ユーザーアイコン" width="50px" height="auto"></a></figure>
-      <div class="post-content">
-        <div class="post-name">
+    <li class="post_block">
+      <figure><a href="/profile/{{$post->user->id}}"><img class="image-circle" src="{{ asset('storage/images/' . $post->user->images ) }}" alt="ユーザーアイコン" width="50px" height=""></a></figure>
+      <div class="post_content">
+        <div class="post_name">
           <div>{{ $post->user->username}}</div>
           <div>{{ $post->created_at}}</div>
         </div>

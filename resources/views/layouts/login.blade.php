@@ -25,27 +25,27 @@
 </head>
 <body>
     <header>
-        <div id = "head">
+        <div class = "head">
             <!--「href="/top"」でリンク追加-->
-            <div>
-                <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}" width="120px" height="auto"></a></h1>
+            <div class="header_atlas_icon">
+                <div><a href="/top"><img src="{{ asset('images/atlas.png') }}" width="120px" height="auto"></a></div>
+            </div>
+            <div class="header_user_content">
                 <!--Auth::user()->DBでのテーブルのカラム名}}-->
-                <p>{{Auth::user()->username}}さん</p>
-                <div>
+                <div class="auth_user_name">{{Auth::user()->username}}さん</div>
                     <!--アコーディオンメニュー-->
-                    <div class="accordion-container">
-                        <div class="menu-trigger">
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <nav class="menu">
+                <div class="accordion-container">
+                    <div class="menu-trigger">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <nav class="menu">
                         <ul>
                             <li><a href="/top">ホーム</a></li>
                             <li><a href="/profile/{{ Auth::user()->id }}">プロフィール編集</a></li>
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>
                     </nav>
-                </div>
                 </div>
                 <img src="{{ asset('storage/images/' . Auth::user()->images ) }}" width="50px" height="auto">
             </div>
@@ -55,27 +55,31 @@
 
 
 
-    <div id="row">
+    <div class="row">
         <div id="container">
             @yield('content')
         </div >
-        <div id="side-bar">
-            <div id="confirm">
+        <div class="side_bar">
+            <div class="confirm_1">
                 <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>{{ auth()->user()->followings->count() }}名</p>
+                <p class="follow_count">{{ auth()->user()->followings->count() }}名</p>
                 </div>
-                <p class="btn"><a href="/followList">フォローリスト</a></p>
+                <div class="follow_button"><button type="button" class="btn btn-primary"><a href="/followList" style="color: white;">フォローリスト</a></button></div>
                 <div>
                 <p>フォロワー数</p>
-                <p>{{ auth()->user()->followers->count() }}名</p>
+                <p class="follow_count">{{ auth()->user()->followers->count() }}名</p>
                 </div>
-                <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
+                <div class="follow_button"><button type="button" class="btn btn-primary"><a href="/followerList" style="color: white;">フォロワーリスト</a></button></div>
             </div>
-            <p class="btn"><a href="{{ route('users.search') }}">ユーザー検索</a></p>
+            <div class="confirm_2">
+                <div class="search_button"></div><button type="button" class="btn btn-primary"><a href="{{ route('users.search') }}" style="color: white;">ユーザー検索</a></button>
+            </div>
         </div>
     </div>
+
+
     <footer>
     </footer>
     <script src="app.js"></script>
