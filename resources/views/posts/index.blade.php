@@ -68,7 +68,7 @@
       <figure><input type="image" src="images/edit.png" alt="更新" width="30px" height="30px" style="border-radius: 10%;"></figure>
       {{ csrf_field() }}
     </form>
-    <a class="js-modal-close" href="">閉じる</a>
+    <!-- <a class="js-modal-close" href="">閉じる</a> -->
   </div>
 </div>
 
