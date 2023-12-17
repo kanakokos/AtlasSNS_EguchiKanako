@@ -292,6 +292,36 @@ li {
 }
 
 
+.modal__content {
+    width: 200px;
+    height: 150px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_post {
+    height: 80%;
+    width: 100%;
+}
+
+.modal_id {
+    display: none;
+}
+
+.modal__content figure {
+    display: flex;
+    align-items: center;
+}
+
+.modal__content figure input {
+    margin-left: 10px;
+}
+
 
 
 /* search */
