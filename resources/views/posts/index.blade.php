@@ -11,7 +11,7 @@
 <div class="auth_post">
   <div class="auth_post_content">
     <figure><img src="{{ asset('storage/images/' . Auth::user()->images ) }}" width="50px" height="50px"></figure>
-    <div>{{ Form::text('post', null, ['class' => 'input', 'style' => 'border: none; height: 50px; width: 400px;', 'placeholder' => '投稿内容を入力してください']) }}</div>
+    <div>{{ Form::textarea('post', null, ['class' => 'input', 'style' => 'border: none; height: 50px; width: 400px; resize: none;', 'placeholder' => '投稿内容を入力してください']) }}</div>
     <figure><input type="image" src="images/post.png" alt="登録" width="30px" height="30px" style="border-radius: 10%;"></figure>
   {!! Form::close() !!}
   </div>
@@ -29,9 +29,9 @@
       <div class="post_content">
         <div class="post_name">
           <div>{{ $post->user->username}}</div>
-          <div>{{ $post->created_at}}</div>
+          <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
         </div>
-        <div>{{ $post->post}}</div>
+        <div>{!! nl2br(e($post->post)) !!}</div>
 @if(Auth::id()==$post->user_id)
   <!-- 更新ボタン -->
       <div class="auth_content">
@@ -102,7 +102,7 @@
 </div> -->
 
 @else
-    <p>投稿がありません。</p>
+    <p></p>
 @endif
 
 @endsection

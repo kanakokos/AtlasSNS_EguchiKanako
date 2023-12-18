@@ -19,9 +19,9 @@
       <div class="post_content">
         <div class="post_name">
           <div>{{ $post->user->username}}</div>
-          <div>{{ $post->created_at}}</div>
+          <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
         </div>
-        <div>{{ $post->post}}</div>
+        <div>{!! nl2br(e($post->post)) !!}</div>
       </div>
     </li>
   </ul>

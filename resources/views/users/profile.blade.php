@@ -23,9 +23,8 @@
       <div><button type="button" class="btn btn-primary"><a href="/following/{{$user->id}}" style="color: white;">フォローする</a></button></div>
     </div>
 @endif
-</div>
   </div>
-</div>
+
 <!-- 投稿一覧 -->
 @if($user->posts->count() > 0)
 @foreach($user->posts()->orderBy('id','desc')->get() as $post)
@@ -36,9 +35,9 @@
       <div class="post_content">
         <div class="post_name">
           <div>{{ $user->username }}</div>
-          <div>{{ $post->created_at }}</div>
+          <div>{{ $post->created_at->format('Y-m-d H:i')  }}</div>
         </div>
-        <div>{{ $post->post }}</div>
+        <div>{!! nl2br(e($post->post)) !!}</div>
       </div>
     </li>
   </ul>
@@ -46,8 +45,12 @@
 
 @endforeach
 @else
-    <p class="post_not_find">投稿がありません。</p>
+<div class="post_not_find">
+  <p></p>
+</div>
+
 @endif
+
 @endif
 
 
@@ -77,7 +80,7 @@
           </div>
           <div>
             <p>password</p>
-            <input type="password" class="profile_input" name="newpassword" value="{{ $user->password }}" />
+            <input type="password" class="profile_input" name="newpassword" value="" />
           </div>
           <div>
             <p>password comfirm</p>
