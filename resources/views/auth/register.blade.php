@@ -26,7 +26,7 @@
       <div>{{ Form::password('password', ['class' => 'input', 'style' => 'border-radius: 4px; border: none;']) }}</div>
 
       <p>{{ Form::label('password comfirm') }}</p>
-      <div>{{ Form::text('password_confirmation',null,['class' => 'input', 'style' => 'border-radius: 4px; border: none;']) }}</div>
+      <div>{{ Form::password('password_confirmation', ['class' => 'input', 'style' => 'border-radius: 4px; border: none;']) }}</div>
 
       <div>{{ Form::submit('REGISTER', ['class' => 'custom_button']) }}</div>
 
