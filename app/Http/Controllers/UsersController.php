@@ -72,7 +72,7 @@ class UsersController extends Controller
         }
 
         // 認証情報を更新
-        Auth::setUser($user);
+        // Auth::setUser($user);
 
         $user->save();
 
