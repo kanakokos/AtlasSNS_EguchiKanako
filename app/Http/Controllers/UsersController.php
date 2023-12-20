@@ -57,7 +57,7 @@ class UsersController extends Controller
 
         $user->username = $request->input('username');
         $user->mail = $request->input('mail');
-        $user->password = bcrypt($request->input('password'));
+        $user->password = bcrypt($request->input('newpassword'));
         $user->bio = $request->input('bio');
 // dd($user);
         // $user->save();
@@ -71,7 +71,12 @@ class UsersController extends Controller
             $user->images = $thumbnailName;
         }
 
+        // 認証情報を更新
+        Auth::setUser($user);
+
         $user->save();
+
+
 
         return redirect('top')->with('flash_message', '変更しました');
 
